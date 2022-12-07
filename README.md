@@ -1,4 +1,4 @@
-# API_chuck_norris
+# API_chuck_norris - Kevin Soffa
 
 ## Rotas
 
