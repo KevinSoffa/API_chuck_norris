@@ -5,8 +5,6 @@ from decouple import config
 
 #Random de Piadas
 def requisicao_repository():
-    print('repository')
-
 
     listagem = request(
         'GET',

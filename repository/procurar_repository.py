@@ -2,7 +2,7 @@ from fastapi import HTTPException
 from requests import request
 
 
-# Filtrando por palavras e categoria
+# Filtro por palavra e categoria
 def procurar_repository(dto: dict):
     procurar = request(
         'GET',
