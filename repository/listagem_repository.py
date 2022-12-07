@@ -3,6 +3,7 @@ from requests import request
 from decouple import config
 
 
+#Random de Piadas
 def requisicao_repository():
     print('repository')
 
@@ -18,11 +19,13 @@ def requisicao_repository():
     )
 
     response = listagem.json()
-    print(response)
+
     if response:
         return {
-            "joker": response['value'],
+            "api": "Chuck Norris",
+            "joke": response['value'],
         }
+
     raise HTTPException(
-    status_code=404
+        status_code=404
     )

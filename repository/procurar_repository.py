@@ -2,6 +2,7 @@ from fastapi import HTTPException
 from requests import request
 
 
+# Filtrando por palavras e categoria
 def procurar_repository(dto: dict):
     procurar = request(
         'GET',
@@ -12,14 +13,15 @@ def procurar_repository(dto: dict):
     )
 
     res = procurar.json()
+
     response = []
 
-    #filtrando por dados relevantes
+    #filtrando por Categoria ou palavras
     for value in res['result']:
+
         valores = {
-            "api": "chucknorris",
             "category": value['categories'],
-            "joker": value['value']
+            "joke": value['value']
         }
         response.append(valores)
 
@@ -31,14 +33,18 @@ def procurar_repository(dto: dict):
         response = response[:limite]
 
         if dto['paginacao_limite'] > total:
-            return {
-                "error": 404,
-                "detail": str(dto['paginacao_limite']) + f' é maior ao número total de piadas: {total}'
-            } 
+            raise HTTPException(
+                status_code=404,
+                detail=str(dto['paginacao_limite']) + f' é maior ao número total de piadas: {total}'
+            )
+            
         return response
 
     if response:
-        return response
+        return {
+            "total": total,
+            "response": response
+        }
 
     raise HTTPException(
     status_code=404
