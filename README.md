@@ -16,3 +16,8 @@ Nenhum item obrigatório
 /kevin/procurar?categoria={palavra}&paginacao_limite={limite}
 #### Queryparams Obrigatorio ?categoria={palavra} -- String
 #### Queryparams NÃO Obrigatorio ?paginacao_limite={limite} -- Int
+
+<hr>
+
+## Observações
+As rotas de requisições da API estão no arquivo .env
