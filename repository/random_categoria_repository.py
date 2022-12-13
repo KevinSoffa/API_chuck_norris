@@ -4,7 +4,7 @@ import random
 
 
 # Filtro por palavra e categoria
-def procurar_repository(dto: dict):
+def random_repository(dto: dict):
     procurar = request(
         'GET',
         'https://api.chucknorris.io/jokes/search?query=' + dto['categoria'],
@@ -30,8 +30,8 @@ def procurar_repository(dto: dict):
     limite = dto['paginacao_limite']
     total = len(response)
     
-    a = random.randint(0, int(total))
-    print('RANDOM: ',a)
+    aleatorio = random.randint(0, int(total))
+    
 
     if dto['paginacao_limite']:
         response = response[:limite]
@@ -41,13 +41,18 @@ def procurar_repository(dto: dict):
                 status_code=404,
                 detail=str(dto['paginacao_limite']) + f' é maior ao número total de piadas: {total}'
             )
-        print('com limitação')
+
         return response
     
     if response:
+        if total == aleatorio:
+            aleatorio = aleatorio - 1
+            return {
+                "response": response[aleatorio]
+            }
+
         return {
-            "total": total,
-            "response": response
+            "response": response[aleatorio]
         }
 
     raise HTTPException(
