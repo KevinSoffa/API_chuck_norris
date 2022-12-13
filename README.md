@@ -19,5 +19,9 @@ Nenhum item obrigatório
 
 <hr>
 
+### GET - Categoria ou Palavra [Random]
+kevin/random/categoria?categoria=food
+#### Queryparams Obrigatorio ?categoria={palavra} -- String
+
 ## Observações
 As rotas de requisições da API estão no arquivo .env
