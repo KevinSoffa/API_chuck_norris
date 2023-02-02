@@ -1,0 +1,4 @@
+from .random_categoria_service import random_categoria_service
+from .procurar_service import procurar_service
+from .listagem_service import listagem_service
+from .categoria_service import categoria_service

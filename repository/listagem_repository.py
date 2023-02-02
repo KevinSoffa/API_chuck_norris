@@ -17,13 +17,4 @@ def requisicao_repository():
     )
 
     response = listagem.json()
-
-    if response:
-        return {
-            "api": "Chuck Norris",
-            "joke": response['value'],
-        }
-
-    raise HTTPException(
-        status_code=404
-    )
+    return response

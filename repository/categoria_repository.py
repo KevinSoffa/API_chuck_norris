@@ -1,4 +1,3 @@
-from fastapi import HTTPException
 from requests import request
 from decouple import config
 
@@ -18,9 +17,4 @@ def categoria_repository():
 
     response = cat.json()
 
-    if response:
-        return response
-
-    raise HTTPException(
-        status_code=404
-    )
+    return response

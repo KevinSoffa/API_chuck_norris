@@ -1,12 +1,12 @@
-from model.dto import ListagemDTO
+from service import random_categoria_service
 from fastapi import status, Depends
+from model.dto import ListagemDTO
 from .router import router
-from repository import random_repository
 
 
-#Procurando por categoria ou palavras
+#Procurando por categoria ou palavras piadas aleatorias
 @router.get('/random/categoria', status_code=status.HTTP_200_OK)
 def random_controller(
     listagem_dto: ListagemDTO = Depends()
 ):
-    return random_repository(listagem_dto.__dict__,)
+    return random_categoria_service(listagem_dto.__dict__,)
